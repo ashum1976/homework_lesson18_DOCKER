@@ -6,14 +6,14 @@
 
 1. Для создания образа, из которого в последствии будем разворачивать контейнеры, используем Dockerfile:
 
-    1  FROM alpine:3.12
-    2  MAINTAINER Andrey Shumeyko aka Dancer76 <a_shu@inbox.ru>
-    3  RUN apk update
-    4  RUN apk add --no-cache curl && apk add nginx && mkdir -p /run/nginx
-    5  EXPOSE 80
-    6  ADD /docfile/index.html /usr/share/nginx/html/
-    7  ADD /docfile/default.conf /etc/nginx/conf.d/
-    8  ENTRYPOINT [ "/usr/sbin/nginx", "-g", "daemon off;" ]
+        1  FROM alpine:3.12
+        2  MAINTAINER Andrey Shumeyko aka Dancer76 <a_shu@inbox.ru>
+        3  RUN apk update
+        4  RUN apk add --no-cache curl && apk add nginx && mkdir -p /run/nginx
+        5  EXPOSE 80
+        6  ADD /docfile/index.html /usr/share/nginx/html/
+        7  ADD /docfile/default.conf /etc/nginx/conf.d/
+        8  ENTRYPOINT [ "/usr/sbin/nginx", "-g", "daemon off;" ]
 
 по умолчанию, будет стартовать контейнер с запускаемым nginx-ом, на порту 80.
 
@@ -21,9 +21,9 @@
 
       docker run -d --rm -p 8080:80 --name nginx_alpine dancer76/alpine_nginx:1.0
 
-строка 4 - создадим дополнительно каталог /run/nginx, для старта nginx-a
-строка 6 - добавим свой index.html  файл
-строка 7 - заменим дефолтный конфиг, на свой, где прописан путь к index.html
+строка 4 - создадим дополнительно каталог /run/nginx, для старта nginx-a  
+строка 6 - добавим свой index.html файл  
+строка 7 - заменим дефолтный конфиг, на свой, где прописан путь к index.html  
 
 В Vagrantfile настроена внешняя сеть 192.168.10.11, можно подключится с основного хостового компа, где тоже создатся интерфейс из этой же сети.
 

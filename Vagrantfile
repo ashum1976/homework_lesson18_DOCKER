@@ -54,8 +54,8 @@ Vagrant.configure("2") do |config|
               echo "Test server nginx on system alpine 3.12" > ./docfile/index.html
               touch /etc/containers/nodocker
               chcon -R -t container_file_t ./docfile/index.html
-              docker build -t dancer76/alpine_image:1.0 .
-              docker run -d --rm -p 8080:80 --name nginx_alpine dancer76/alpine_image:1.0
+              docker build -t dancer76/alpine_nginx:1.0 .
+              docker run -d --rm -p 8080:80 --name nginx_alpine dancer76/alpine_nginx:1.0
               # dnf install -y --nogpgcheck borgbackup sshpass > /dev/null 2>&1
                   SHELL
 
