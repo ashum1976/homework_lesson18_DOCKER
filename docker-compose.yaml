@@ -1,0 +1,15 @@
+version: "3.5"
+volumes:
+      ngnxstr:
+networks:
+      ngnx_network:
+services:
+      podman_nginx:
+        image:  alpine:3.12
+      ports:
+        - '8800:80'
+      volumes:
+        - '/root/docfile/:/usr/share/nginx/html/'
+        -  ngnxstr:/root/test
+      networks:
+          - ngnx_network
